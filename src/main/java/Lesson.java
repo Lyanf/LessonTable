@@ -15,6 +15,10 @@ class Lesson {
         this.teacherName = teacherName;
     }
 
+
+
+
+
     public ArrayList<LessonTimeAndRoom> getLessonTimeAndRoomList() {
         return lessonTimeAndRoomList;
     }
