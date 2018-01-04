@@ -93,6 +93,9 @@ public class Link {
             writer.close();
             HtmlParser htmlParser = new HtmlParser(html);
             Lesson[] lessons = htmlParser.getLessonList();
+            //
+            System.out.println("link 成功，返回lesons");
+            //
             return lessons;
 
         } catch (Exception e) {

@@ -14,7 +14,7 @@ public class LessonTableView extends Control {
     private GridPane table;
     @FXML
     private Canvas testCanvas;
-
+    private ArrayList<FlowPane> flowPanes = new ArrayList<>();
     private void setTableCell(String lessonName, String room, Color color, int column, int row, int columnSpan, int rowSpan) {
         FlowPane flowPane = new FlowPane();
         flowPane.setPrefWidth(80);
@@ -48,6 +48,7 @@ public class LessonTableView extends Control {
         text.setLayoutX(20);
         text.setLayoutY(20);
         flowPane.getChildren().add(text);
+        flowPanes.add(flowPane);
         table.add(flowPane, column, row, columnSpan, rowSpan);
     }
     public void setLesson(Lesson lesson,Color color,int week){
@@ -69,6 +70,7 @@ public class LessonTableView extends Control {
                     setTableCell(lessonName,lessonTimeAndRoom.getRoom(),color,
                             lessonTimeAndRoom.getDay(),lessonTimeAndRoom.getTimeStart(),
                             1,lessonTimeAndRoom.getTimeEnd()-lessonTimeAndRoom.getTimeStart()+1 );
+                    System.out.println("有一个单周"+lessonName);
                 }
                 else if (lessonTimeAndRoom.getWeekType() == LessonTimeAndRoom.WeekType.shuangzhou&&week%2==0){
                     setTableCell(lessonName,lessonTimeAndRoom.getRoom(),color,
@@ -77,6 +79,11 @@ public class LessonTableView extends Control {
                 }
             }
         }
+    }
+    public  void clearLessons(){
+        FlowPane [] temp = new FlowPane[flowPanes.size()];
+        flowPanes.toArray(temp);
+        table.getChildren().removeAll(temp);
     }
 }
 

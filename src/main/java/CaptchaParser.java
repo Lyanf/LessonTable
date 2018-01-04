@@ -15,6 +15,9 @@ class CaptchaParser {
         jsonObject = aipOcr.basicGeneral(image, new HashMap<String, String>());
         JSONArray maps = (JSONArray) jsonObject.get("words_result");
         JSONObject jsonObject1 = (JSONObject) maps.get(0);
+        //
+        System.out.println("验证码成功："+jsonObject1.get("words"));
+        //
         return (String) jsonObject1.get("words");
     }
 
