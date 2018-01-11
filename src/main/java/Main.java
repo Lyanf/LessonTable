@@ -2,16 +2,8 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
-import java.awt.*;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class Main extends Application {
@@ -26,6 +18,7 @@ public class Main extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("RootBasic.fxml"));
         try {
             Parent parent = fxmlLoader.load();
+            primaryStage.setTitle("兰大课程表");
             primaryStage.setScene(new Scene(parent));
 //            AnchorPane anchorPane = fxmlLoader.load();
 //            primaryStage.setScene(new Scene(anchorPane,Color.TRANSPARENT));
@@ -39,5 +32,5 @@ public class Main extends Application {
         }
 
     }
-    
+
 }

@@ -2,14 +2,10 @@ import okhttp3.*;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.InputStream;
-import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-//        GetRequest getRequest = (Unirest.get("www.hao123.com"));
 
 public class Link {
     private String userID, userPassword;
@@ -48,17 +44,12 @@ public class Link {
                 okHttpClient = new OkHttpClient.Builder().cookieJar(new MyCookieJar()).build();
                 picRequest = new Request.Builder().url(picUrl).build();
                 response = okHttpClient.newCall((picRequest)).execute();
-                File file = new File("test.jpg");
-                FileOutputStream fileOutputStream = new FileOutputStream(file);
                 byte[] img = new byte[2000];
                 InputStream inputStream = response.body().byteStream();
                 int j = inputStream.read(img);
-                fileOutputStream.write(img, 0, j);
-                fileOutputStream.flush();
-                fileOutputStream.close();
                 //以上是用来获取图片并且有了cookie，下面吧cookie用起来，并且去登录
                 CaptchaParser captchaParser = new CaptchaParser();
-                String captcha = captchaParser.getCaptchaText("test.jpg");
+                String captcha = captchaParser.getCaptchaText(img);
                 FormBody formBody = new FormBody.Builder()
                         .add("groupId", "")
                         .add("j_username", userID)
@@ -74,9 +65,11 @@ public class Link {
                 String rebody = response.body().string();
                 if (judgePass(rebody) == 0) {
                     continue;
-                } else if (judgePass(rebody) == 1) {
+                }
+                else if (judgePass(rebody) ==1){
                     break;
-                } else {
+                }
+                else {
                     return null;
                 }
             }
@@ -86,16 +79,8 @@ public class Link {
                     .build();
             response = okHttpClient.newCall(request).execute();
             String get = response.body().string();
-            File html = new File("ttt.html");
-            FileOutputStream fileOutputStream1 = new FileOutputStream(html);
-            OutputStreamWriter writer = new OutputStreamWriter(fileOutputStream1);
-            writer.write(get);
-            writer.close();
-            HtmlParser htmlParser = new HtmlParser(html);
+            HtmlParser htmlParser = new HtmlParser(get);
             Lesson[] lessons = htmlParser.getLessonList();
-            //
-            System.out.println("link 成功，返回lesons");
-            //
             return lessons;
 
         } catch (Exception e) {

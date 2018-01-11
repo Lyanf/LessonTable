@@ -9,7 +9,15 @@ import java.util.ArrayList;
 class HtmlParser {
     private Document document = null;
 
-    public HtmlParser(File in) {
+    public Document getDocument() {
+        return document;
+    }
+
+    public void setDocument(Document document) {
+        this.document = document;
+    }
+
+    public HtmlParser(String in) {
         try {
             document = Jsoup.parse(in, "UTF-8");
         } catch (Exception e) {

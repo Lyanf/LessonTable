@@ -101,6 +101,38 @@ class LessonTimeAndRoom {
         return room;
     }
 
+    public void setWeekStart(int weekStart) {
+        this.weekStart = weekStart;
+    }
+
+    public void setWeekEnd(int weekEnd) {
+        this.weekEnd = weekEnd;
+    }
+
+    public void setDay(int day) {
+        this.day = day;
+    }
+
+    public void setTimeStart(int timeStart) {
+        this.timeStart = timeStart;
+    }
+
+    public void setTimeEnd(int timeEnd) {
+        this.timeEnd = timeEnd;
+    }
+
+    public void setWeekType(WeekType weekType) {
+        this.weekType = weekType;
+    }
+
+    public void setRoom(String room) {
+        this.room = room;
+    }
+
+    public void setTrueLesson(boolean trueLesson) {
+        this.trueLesson = trueLesson;
+    }
+
     public boolean isTrueLesson() {
         return trueLesson;
     }

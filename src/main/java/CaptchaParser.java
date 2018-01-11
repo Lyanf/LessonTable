@@ -10,7 +10,7 @@ class CaptchaParser {
     private final String SECRET_KEY = "TZmarRGqks6r3EjD47yGUb2yztNg7qWe";
     private AipOcr aipOcr = new AipOcr(APP_ID, API_KEY, SECRET_KEY);
 
-    public String getCaptchaText(String image) {
+    public String getCaptchaText(byte[] image) {
         JSONObject jsonObject;
         jsonObject = aipOcr.basicGeneral(image, new HashMap<String, String>());
         JSONArray maps = (JSONArray) jsonObject.get("words_result");
