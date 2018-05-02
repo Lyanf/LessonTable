@@ -13,10 +13,6 @@ public class Link {
     public Link(String userID, String userPassword) {
         this.userID = userID;
         this.userPassword = userPassword;
-        if (userID.equals("1")&&userPassword.equals("1")){
-            this.userID = "320150939151";
-            this.userPassword = "a7889280";
-        }
     }
 
     public String getUserID() {
